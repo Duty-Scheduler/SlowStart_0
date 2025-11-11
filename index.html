@@ -3,33 +3,54 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bài Tập Lớn - Hệ Thống Quản Lý Sinh Viên</title>
+  <title>Bài Tập Lớn - Ứng Dụng Quản Lý Trực Nhật - Clean Up</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 </head>
+
 <body class="bg-gray-50 text-gray-800">
   <!-- Header -->
   <header class="bg-indigo-600 text-white text-center py-10">
-    <h1 class="text-4xl font-bold">🧩 Hệ Thống Quản Lý Sinh Viên</h1>
-    <p class="mt-2 text-lg">Bài tập lớn nhóm - Nộp qua GitHub Pages</p>
+    <h1 class="text-4xl font-bold">Ứng Dụng Quản Lý Trực Nhật - Clean Up</h1>
+    <p class="mt-2 text-lg">Slogan: Tổ chức công việc nhóm, đơn giản và hiệu quả</p>
   </header>
 
   <!-- Mô tả dự án -->
   <section class="max-w-5xl mx-auto p-6 bg-white mt-10 rounded-xl shadow" data-aos="fade-up">
     <h2 class="text-2xl font-bold text-indigo-700 mb-4">📘 Thông Tin Dự Án</h2>
-    <p><strong>Tên dự án:</strong> Hệ Thống Quản Lý Sinh Viên</p>
-    <p class="mt-2"><strong>Mô tả vấn đề:</strong> Ứng dụng hỗ trợ giảng viên và sinh viên quản lý thông tin học tập, điểm số và lịch học một cách hiệu quả, thay thế phương thức quản lý thủ công bằng Excel.</p>
+    <p><strong>Tên dự án:</strong> Clean Up - Hệ thống Quản lý Trực Nhật</p>
+    <p class="mt-2"><strong>Mục tiêu:</strong> Xây dựng một ứng dụng di động giúp các nhóm (ký túc xá, văn phòng, câu lạc bộ, v.v.) quản lý và theo dõi công việc chung một cách minh bạch, công bằng và tự động.</p>
+
+    <p class="mt-4"><strong>Vấn đề cần giải quyết:</strong></p>
+    <ul class="list-disc list-inside space-y-1">
+      <li>Thành viên quên hoặc bỏ lỡ nhiệm vụ được giao.</li>
+      <li>Thiếu bằng chứng xác thực công việc đã hoàn thành.</li>
+      <li>Tranh cãi về việc phân công hoặc theo dõi không công bằng.</li>
+      <li>Khó quản lý quy định, hình thức phạt và nhắc nhở một cách hệ thống.</li>
+    </ul>
+  </section>
+
+  <!-- Mục tiêu của ứng dụng -->
+  <section class="max-w-5xl mx-auto p-6 bg-white mt-6 rounded-xl shadow" data-aos="fade-up">
+    <h2 class="text-2xl font-bold text-indigo-700 mb-4">🎯 Mục Tiêu Ứng Dụng</h2>
+    <ul class="list-disc list-inside space-y-2">
+      <li><strong>Tăng tính trách nhiệm:</strong> Mỗi nhiệm vụ đều gắn với người phụ trách và thời hạn cụ thể.</li>
+      <li><strong>Đảm bảo minh bạch:</strong> Lịch sử công việc, bằng chứng hoàn thành (ảnh), và hình phạt đều được lưu trữ công khai.</li>
+      <li><strong>Tự động hóa quản lý:</strong> Hệ thống tự động nhắc hẹn, ghi nhận và phân quyền người dùng.</li>
+      <li><strong>Xây dựng tinh thần nhóm:</strong> Tạo môi trường công bằng, khuyến khích sự tham gia của tất cả thành viên.</li>
+    </ul>
   </section>
 
   <!-- Tính năng chính -->
   <section class="max-w-5xl mx-auto p-6 bg-white mt-6 rounded-xl shadow" data-aos="fade-up">
-    <h2 class="text-2xl font-bold text-indigo-700 mb-4">✨ Tính Năng Chính</h2>
+    <h2 class="text-2xl font-bold text-indigo-700 mb-4">✨ Tính Năng Chính (MVP)</h2>
     <ul class="list-disc list-inside space-y-2">
-      <li>👤 Quản lý sinh viên, giảng viên, lớp học</li>
-      <li>🗓️ Xem và đăng ký lịch học</li>
-      <li>📊 Thống kê điểm, xếp hạng</li>
-      <li>🔐 Đăng nhập, phân quyền người dùng</li>
+      <li>📅 Lên lịch và phân công công việc trực nhật tự động hoặc thủ công.</li>
+      <li>📸 Gửi ảnh xác nhận khi hoàn thành nhiệm vụ.</li>
+      <li>🔔 Nhắc nhở công việc qua thông báo.</li>
+      <li>⚖️ Theo dõi và hiển thị lịch sử, hình phạt, điểm thưởng.</li>
+      <li>👥 Quản lý nhóm, phân quyền admin / thành viên.</li>
     </ul>
   </section>
 
@@ -45,10 +66,11 @@
           </tr>
         </thead>
         <tbody>
-          <tr><td class="py-2 px-4">🐍 Python / Django</td><td class="py-2 px-4">Xây dựng backend, xử lý logic</td></tr>
-          <tr><td class="py-2 px-4">💾 PostgreSQL</td><td class="py-2 px-4">Cơ sở dữ liệu chính</td></tr>
-          <tr><td class="py-2 px-4">⚛️ ReactJS</td><td class="py-2 px-4">Xây dựng giao diện người dùng</td></tr>
-          <tr><td class="py-2 px-4">🐳 Docker</td><td class="py-2 px-4">Triển khai môi trường linh hoạt</td></tr>
+          <tr><td class="py-2 px-4">🟢 Node.js / Express</td><td class="py-2 px-4">Xây dựng backend REST API.</td></tr>
+          <tr><td class="py-2 px-4">🍃 MongoDB</td><td class="py-2 px-4">Lưu trữ dữ liệu công việc, người dùng, lịch trực.</td></tr>
+          <tr><td class="py-2 px-4">⚛️ React Native</td><td class="py-2 px-4">Phát triển giao diện ứng dụng di động.</td></tr>
+          <tr><td class="py-2 px-4">☁️ Cloudinary / Firebase</td><td class="py-2 px-4">Lưu trữ ảnh minh chứng và thông báo.</td></tr>
+          <tr><td class="py-2 px-4">🐳 Docker</td><td class="py-2 px-4">Triển khai hệ thống dễ dàng trên nhiều môi trường.</td></tr>
         </tbody>
       </table>
     </div>
@@ -57,7 +79,8 @@
   <!-- Screenshot -->
   <section class="max-w-5xl mx-auto p-6 bg-white mt-6 rounded-xl shadow text-center" data-aos="fade-up">
     <h2 class="text-2xl font-bold text-indigo-700 mb-4">🖼️ Ảnh Minh Họa</h2>
-    <img src="assets/images/screenshot.png" alt="Giao diện hệ thống" class="rounded-lg shadow-md mx-auto max-w-xl" />
+    <img src="assets/images/screenshot.png" alt="Giao diện ứng dụng Clean Up" class="rounded-lg shadow-md mx-auto max-w-xl" />
+    <p class="text-gray-500 mt-2">Giao diện minh họa trang quản lý lịch trực và báo cáo công việc.</p>
   </section>
 
   <!-- Thành viên nhóm -->
@@ -72,6 +95,7 @@
         </tr>
       </thead>
       <tbody>
+        <tr><td class="py-2 px-4">Bùi Thanh Tùng</td><td class="py-2 px-4">Trưởng nhóm / Fullstack Developer</td><td class="py-2 px-4">tung@example.com</td></tr>
         <tr><td class="py-2 px-4">Nguyễn Văn A</td><td class="py-2 px-4">Backend Developer</td><td class="py-2 px-4">a@example.com</td></tr>
         <tr><td class="py-2 px-4">Trần Thị B</td><td class="py-2 px-4">Frontend Developer</td><td class="py-2 px-4">b@example.com</td></tr>
         <tr><td class="py-2 px-4">Lê Văn C</td><td class="py-2 px-4">Tester</td><td class="py-2 px-4">c@example.com</td></tr>
@@ -83,14 +107,14 @@
   <section class="max-w-5xl mx-auto p-6 bg-white mt-6 rounded-xl shadow" data-aos="fade-up">
     <h2 class="text-2xl font-bold text-indigo-700 mb-4">🔗 Liên Kết Dự Án</h2>
     <ul class="list-disc list-inside">
-      <li>🌐 <strong>GitHub Pages:</strong> <a href="https://ten-nhom.github.io/ten-du-an" class="text-indigo-600">https://ten-nhom.github.io/ten-du-an</a></li>
-      <li>💻 <strong>GitHub Repository:</strong> <a href="https://github.com/ten-nhom/ten-du-an" class="text-indigo-600">https://github.com/ten-nhom/ten-du-an</a></li>
+      <li>🌐 <strong>GitHub Pages:</strong> <a href="https://duty-scheduler.github.io/CleanUp_document/" class="text-indigo-600">https://duty-scheduler.github.io/CleanUp_document/</a></li>
+      <li>💻 <strong>GitHub Repository:</strong> <a href="https://github.com/Duty-Scheduler/CleanUp_document" class="text-indigo-600">https://github.com/Duty-Scheduler/CleanUp_document</a></li>
     </ul>
   </section>
 
   <!-- Footer -->
   <footer class="text-center py-6 text-gray-600 mt-10">
-    © 2025 Nhóm 1 - Hệ Thống Quản Lý Sinh Viên
+    © 2025 Nhóm L01 - Clean Up Project | All Rights Reserved
   </footer>
 
   <script>
