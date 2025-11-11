@@ -3,285 +3,133 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bài Tập Lớn - Ứng Dụng Quản Lý Trực Nhật - Clean Up</title>
+  <title>Clean Up – Ứng dụng Quản lý Trực Nhật</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/framer-motion/dist/framer-motion.umd.js"></script>
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3242/3242257.png" />
   <style>
-    /* ======= FONT & RESET ======= */
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    html {
       scroll-behavior: smooth;
     }
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #eef2ff, #e0e7ff, #f8f9ff);
-      color: #222;
-      overflow-x: hidden;
+    .fade-in {
+      animation: fadeInUp 1s ease-out;
     }
-
-    /* ======= HEADER ======= */
-    header {
-      position: relative;
-      text-align: center;
-      color: white;
-      padding: 120px 20px;
-      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #9333ea 100%);
-      overflow: hidden;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-    }
-    header::before {
-      content: "";
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: url('https://www.transparenttextures.com/patterns/cubes.png');
-      opacity: 0.15;
-      z-index: 0;
-    }
-    header h1 {
-      font-size: 2.8rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-      position: relative;
-      z-index: 1;
-      animation: fadeDown 1.2s ease forwards;
-    }
-    header p {
-      font-size: 1.2rem;
-      opacity: 0.9;
-      margin-top: 15px;
-      z-index: 1;
-      position: relative;
-      animation: fadeUp 1.5s ease forwards;
-    }
-
-    /* ======= SECTION ======= */
-    section {
-      max-width: 1000px;
-      margin: 60px auto;
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(14px);
-      border-radius: 18px;
-      padding: 40px;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-      transform: translateY(60px);
-      opacity: 0;
-      transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    h2 {
-      color: #4f46e5;
-      font-size: 1.9rem;
-      font-weight: 600;
-      border-left: 5px solid #7c3aed;
-      padding-left: 15px;
-      margin-bottom: 25px;
-    }
-    p, li {
-      font-size: 1.05rem;
-      line-height: 1.7;
-      color: #333;
-    }
-    ul {
-      margin-left: 25px;
-      list-style-type: disc;
-    }
-
-    /* ======= TABLE ======= */
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 10px;
-      border-radius: 10px;
-      overflow: hidden;
-    }
-    th, td {
-      padding: 14px 18px;
-      text-align: left;
-    }
-    th {
-      background: linear-gradient(90deg, #eef2ff, #e0e7ff);
-      color: #4338ca;
-      font-weight: 600;
-    }
-    tr:nth-child(even) td {
-      background-color: #fafafa;
-    }
-    tr:hover td {
-      background-color: #f3f4f6;
-    }
-
-    /* ======= IMAGE ======= */
-    img {
-      max-width: 90%;
-      border-radius: 16px;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.15);
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-    }
-    img:hover {
-      transform: scale(1.03);
-      box-shadow: 0 12px 35px rgba(0,0,0,0.25);
-    }
-
-    /* ======= LINK ======= */
-    a {
-      color: #4f46e5;
-      font-weight: 500;
-      transition: color 0.3s ease;
-      text-decoration: none;
-    }
-    a:hover {
-      color: #7c3aed;
-      text-decoration: underline;
-    }
-
-    /* ======= FOOTER ======= */
-    footer {
-      text-align: center;
-      padding: 40px 0;
-      color: #666;
-      font-size: 0.95rem;
-      background: rgba(255,255,255,0.7);
-      margin-top: 80px;
-      backdrop-filter: blur(10px);
-    }
-
-    /* ======= ANIMATIONS ======= */
-    @keyframes fadeDown {
-      from { opacity: 0; transform: translateY(-30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ======= RESPONSIVE ======= */
-    @media (max-width: 700px) {
-      header h1 { font-size: 1.9rem; }
-      header p { font-size: 1rem; }
-      section { padding: 25px; margin: 40px 15px; }
-      h2 { font-size: 1.4rem; }
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   </style>
 </head>
 
-<body>
+<body class="bg-gray-50 text-gray-800">
   <!-- HEADER -->
-  <header>
-    <h1>Ứng Dụng Quản Lý Trực Nhật - Clean Up</h1>
-    <p>Slogan: Tổ chức công việc nhóm, đơn giản và hiệu quả</p>
+  <header class="bg-gradient-to-r from-green-600 to-teal-500 text-white shadow-lg">
+    <div class="max-w-6xl mx-auto px-6 py-5 flex justify-between items-center">
+      <h1 class="text-2xl font-bold tracking-wide">🌿 Clean Up</h1>
+      <nav class="space-x-6 hidden md:block">
+        <a href="#about" class="hover:underline">Giới thiệu</a>
+        <a href="#problem" class="hover:underline">Vấn đề</a>
+        <a href="#goals" class="hover:underline">Mục tiêu</a>
+        <a href="#resources" class="hover:underline">Tài nguyên</a>
+      </nav>
+    </div>
   </header>
 
-  <!-- THÔNG TIN DỰ ÁN -->
-  <section>
-    <h2>📘 Thông Tin Dự Án</h2>
-    <p><strong>Tên dự án:</strong> Clean Up - Hệ thống Quản lý Trực Nhật</p>
-    <p><strong>Mục tiêu:</strong> Xây dựng một ứng dụng di động giúp các nhóm quản lý công việc chung minh bạch, công bằng và tự động.</p>
-    <p><strong>Vấn đề cần giải quyết:</strong></p>
-    <ul>
-      <li>Thành viên quên hoặc bỏ lỡ nhiệm vụ được giao.</li>
-      <li>Thiếu bằng chứng xác thực công việc đã hoàn thành.</li>
-      <li>Tranh cãi về việc phân công hoặc theo dõi không công bằng.</li>
-      <li>Khó quản lý quy định, hình thức phạt và nhắc nhở một cách hệ thống.</li>
-    </ul>
+  <!-- HERO -->
+  <section class="text-center py-20 bg-gradient-to-b from-teal-50 to-white fade-in">
+    <h2 class="text-4xl md:text-5xl font-bold mb-4 text-teal-600">Ứng dụng Quản lý Trực Nhật</h2>
+    <p class="text-lg text-gray-700 mb-6">“Tổ chức công việc nhóm, đơn giản và hiệu quả.”</p>
+    <a href="#about" class="bg-teal-600 hover:bg-teal-700 text-white px-6 py-3 rounded-full font-semibold transition duration-300 shadow-lg">
+      Khám phá Dự án
+    </a>
   </section>
 
-  <!-- MỤC TIÊU -->
-  <section>
-    <h2>🎯 Mục Tiêu Ứng Dụng</h2>
-    <ul>
-      <li><strong>Tăng tính trách nhiệm:</strong> Mỗi nhiệm vụ đều gắn với người phụ trách và thời hạn cụ thể.</li>
-      <li><strong>Đảm bảo minh bạch:</strong> Lịch sử công việc, bằng chứng hoàn thành (ảnh), và hình phạt đều được lưu trữ công khai.</li>
-      <li><strong>Tự động hóa quản lý:</strong> Hệ thống tự động nhắc hẹn, ghi nhận và phân quyền người dùng.</li>
-      <li><strong>Xây dựng tinh thần nhóm:</strong> Tạo môi trường công bằng, khuyến khích sự tham gia của tất cả thành viên.</li>
-    </ul>
+  <!-- ABOUT -->
+  <section id="about" class="max-w-5xl mx-auto px-6 py-16 fade-in">
+    <h3 class="text-3xl font-bold text-teal-600 mb-6 text-center">🎯 Mục tiêu Dự án</h3>
+    <p class="text-gray-700 leading-relaxed text-justify">
+      Dự án <strong>Clean Up</strong> hướng tới việc xây dựng một ứng dụng di động giúp các nhóm (như ký túc xá, văn phòng, câu lạc bộ)
+      quản lý và theo dõi công việc chung một cách minh bạch, công bằng và có hệ thống.
+    </p>
   </section>
 
-  <!-- TÍNH NĂNG -->
-  <section>
-    <h2>✨ Tính Năng Chính (MVP)</h2>
-    <ul>
-      <li>📅 Lên lịch và phân công công việc trực nhật tự động hoặc thủ công.</li>
-      <li>📸 Gửi ảnh xác nhận khi hoàn thành nhiệm vụ.</li>
-      <li>🔔 Nhắc nhở công việc qua thông báo.</li>
-      <li>⚖️ Theo dõi và hiển thị lịch sử, hình phạt, điểm thưởng.</li>
-      <li>👥 Quản lý nhóm, phân quyền admin / thành viên.</li>
-    </ul>
+  <!-- PROBLEM -->
+  <section id="problem" class="bg-teal-50 py-16 fade-in">
+    <div class="max-w-5xl mx-auto px-6">
+      <h3 class="text-3xl font-bold text-teal-600 mb-8 text-center">⚠️ Vấn đề Cần Giải Quyết</h3>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-white p-6 rounded-2xl shadow-md hover:shadow-lg transition">
+          <h4 class="font-semibold text-lg mb-3">Quên nhiệm vụ</h4>
+          <p class="text-gray-600">Thành viên thường xuyên quên hoặc bỏ lỡ công việc được giao, gây mất cân bằng.</p>
+        </div>
+        <div class="bg-white p-6 rounded-2xl shadow-md hover:shadow-lg transition">
+          <h4 class="font-semibold text-lg mb-3">Thiếu bằng chứng</h4>
+          <p class="text-gray-600">Không có minh chứng xác thực khi công việc được hoàn thành, dẫn đến tranh cãi.</p>
+        </div>
+        <div class="bg-white p-6 rounded-2xl shadow-md hover:shadow-lg transition">
+          <h4 class="font-semibold text-lg mb-3">Phân công không công bằng</h4>
+          <p class="text-gray-600">Nhiệm vụ đôi khi không được phân bổ hợp lý hoặc thiếu lịch sử ghi nhận.</p>
+        </div>
+        <div class="bg-white p-6 rounded-2xl shadow-md hover:shadow-lg transition">
+          <h4 class="font-semibold text-lg mb-3">Thiếu quản lý hệ thống</h4>
+          <p class="text-gray-600">Khó theo dõi, thống kê và áp dụng các quy định, hình thức phạt minh bạch.</p>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <!-- CÔNG NGHỆ -->
-  <section>
-    <h2>⚙️ Công Nghệ Sử Dụng</h2>
-    <table>
-      <thead>
-        <tr><th>Công Nghệ</th><th>Mô Tả</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>🟢 Node.js / Express</td><td>Xây dựng backend REST API.</td></tr>
-        <tr><td>🍃 MongoDB</td><td>Lưu trữ dữ liệu công việc, người dùng, lịch trực.</td></tr>
-        <tr><td>⚛️ React Native</td><td>Phát triển giao diện ứng dụng di động.</td></tr>
-        <tr><td>☁️ Cloudinary / Firebase</td><td>Lưu trữ ảnh minh chứng và thông báo.</td></tr>
-        <tr><td>🐳 Docker</td><td>Triển khai hệ thống dễ dàng trên nhiều môi trường.</td></tr>
-      </tbody>
-    </table>
+  <!-- GOALS -->
+  <section id="goals" class="max-w-5xl mx-auto px-6 py-16 fade-in">
+    <h3 class="text-3xl font-bold text-teal-600 mb-8 text-center">🚀 Mục tiêu Ứng Dụng</h3>
+    <div class="grid md:grid-cols-2 gap-8">
+      <div class="p-6 bg-white rounded-2xl shadow hover:shadow-lg transition">
+        <h4 class="font-semibold text-lg mb-2">Tăng tính trách nhiệm</h4>
+        <p class="text-gray-600">Mỗi nhiệm vụ được giao rõ ràng, có người phụ trách và hạn hoàn thành cụ thể.</p>
+      </div>
+      <div class="p-6 bg-white rounded-2xl shadow hover:shadow-lg transition">
+        <h4 class="font-semibold text-lg mb-2">Đảm bảo minh bạch</h4>
+        <p class="text-gray-600">Lịch sử, bằng chứng và hình thức phạt được lưu và công khai trong nhóm.</p>
+      </div>
+      <div class="p-6 bg-white rounded-2xl shadow hover:shadow-lg transition">
+        <h4 class="font-semibold text-lg mb-2">Tự động hóa quản lý</h4>
+        <p class="text-gray-600">Tích hợp tính năng nhắc hẹn, phân quyền và thống kê giúp giảm tải cho người quản lý.</p>
+      </div>
+      <div class="p-6 bg-white rounded-2xl shadow hover:shadow-lg transition">
+        <h4 class="font-semibold text-lg mb-2">Xây dựng cộng đồng tích cực</h4>
+        <p class="text-gray-600">Khuyến khích tinh thần hợp tác và kỷ luật qua hệ thống công bằng và minh bạch.</p>
+      </div>
+    </div>
   </section>
 
-  <!-- ẢNH -->
-  <section style="text-align:center;">
-    <h2>🖼️ Ảnh Minh Họa</h2>
-    <img src="https://dummyimage.com/900x500/b9b5ff/ffffff.png&text=Clean+Up+App+UI" alt="Giao diện Clean Up">
-    <p style="color:#666; margin-top:10px;">Giao diện minh họa trang quản lý lịch trực và báo cáo công việc.</p>
-  </section>
-
-  <!-- THÀNH VIÊN -->
-  <section>
-    <h2>👥 Thành Viên Nhóm</h2>
-    <table>
-      <thead>
-        <tr><th>Họ Tên</th><th>Vai Trò</th><th>Email</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Bùi Thanh Tùng</td><td>Trưởng nhóm / Fullstack Developer</td><td>tung@example.com</td></tr>
-        <tr><td>Nguyễn Văn A</td><td>Backend Developer</td><td>a@example.com</td></tr>
-        <tr><td>Trần Thị B</td><td>Frontend Developer</td><td>b@example.com</td></tr>
-        <tr><td>Lê Văn C</td><td>Tester</td><td>c@example.com</td></tr>
-      </tbody>
-    </table>
-  </section>
-
-  <!-- LIÊN KẾT -->
-  <section>
-    <h2>🔗 Liên Kết Dự Án</h2>
-    <ul>
-      <li>🌐 <strong>GitHub Pages:</strong> 
-        <a href="https://duty-scheduler.github.io/CleanUp_document/" target="_blank">
-          https://duty-scheduler.github.io/CleanUp_document/
-        </a>
-      </li>
-    </ul>
+  <!-- RESOURCES -->
+  <section id="resources" class="bg-gradient-to-b from-teal-50 to-white py-16 fade-in">
+    <div class="max-w-5xl mx-auto px-6 text-center">
+      <h3 class="text-3xl font-bold text-teal-600 mb-8">📘 Tài liệu & Tài nguyên</h3>
+      <ul class="text-gray-700 space-y-2">
+        <li>• Trang chủ</li>
+        <li>• Nghiên cứu Thị trường</li>
+        <li>• Mô hình Kinh doanh (Canvas)</li>
+        <li>• Tính năng MVP</li>
+        <li>• Luồng người dùng</li>
+      </ul>
+      <a href="https://github.com/Duty-Scheduler/CleanUp_document"
+         target="_blank"
+         class="inline-block mt-8 bg-teal-600 hover:bg-teal-700 text-white px-8 py-3 rounded-full font-semibold shadow-lg transition duration-300">
+        📂 Xem trên GitHub
+      </a>
+    </div>
   </section>
 
   <!-- FOOTER -->
-  <footer>
-    © 2025 Nhóm L01 - Clean Up Project | All Rights Reserved
+  <footer class="bg-gray-900 text-gray-300 py-8 text-center">
+    <p>© 2025 <strong>L01_Slow Start</strong>. All Rights Reserved.</p>
+    <p class="text-sm mt-2">Designed by Bùi Thanh Tùng</p>
   </footer>
-
-  <!-- JS: Hiệu ứng xuất hiện khi cuộn -->
-  <script>
-    const sections = document.querySelectorAll("section");
-    const reveal = () => {
-      const trigger = window.innerHeight * 0.85;
-      sections.forEach(s => {
-        const top = s.getBoundingClientRect().top;
-        if (top < trigger) s.classList.add("visible");
-      });
-    };
-    window.addEventListener("scroll", reveal);
-    window.addEventListener("load", reveal);
-  </script>
 </body>
 </html>
